@@ -1,1 +1,7 @@
-# plugin-user-info
+# @roxavn/plugin-user-info
+
+## Release
+
+```
+npx standard-version
+```
