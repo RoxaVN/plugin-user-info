@@ -9,7 +9,6 @@ import {
   accessManager,
 } from '@roxavn/core/base';
 import { permissions, UserResponse } from '@roxavn/module-user/base';
-import { type FileInfo } from '@roxavn/module-upload/base';
 
 import { baseModule } from '../module.js';
 import { constants } from '../constants.js';
@@ -37,7 +36,7 @@ class UpdateUserInfoRequest extends ExactProps<UpdateUserInfoRequest> {
 
   @IsNotEmptyObject()
   @IsOptional()
-  public readonly avatar?: FileInfo;
+  public readonly avatar?: { id?: string; url?: string };
 
   @IsOptional()
   @TransformDate()

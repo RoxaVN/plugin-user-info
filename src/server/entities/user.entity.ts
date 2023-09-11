@@ -12,7 +12,7 @@ declare module '@roxavn/module-user/server' {
     middleName?: string;
 
     gender?: string;
-    avatar?: FileInfo;
+    avatar?: FileInfo | { url: string };
   }
 }
 

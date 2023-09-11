@@ -16,11 +16,16 @@ export class UpdateUserInfoApiService extends BaseService {
   }
 
   async handle(request: InferApiRequest<typeof userInfoApi.update>) {
-    const avatar =
-      request.avatar &&
-      (await this.getFileApiService.handle({
-        fileId: request.avatar.id,
-      }));
+    let avatar;
+    if (request.avatar) {
+      if (request.avatar.id) {
+        avatar = await this.getFileApiService.handle({
+          fileId: request.avatar.id,
+        });
+      } else if (request.avatar.url) {
+        avatar = { url: request.avatar.url };
+      }
+    }
     await this.databaseService.manager.getRepository(User).update(
       { id: request.userId },
       {
